@@ -1,5 +1,7 @@
 # AML & Fraud Detection Pipeline
 
+![Project cover](.github/cover.png)
+
 End-to-end suspicious transaction detection for **anti-money laundering (AML)** and
 **fraud**, combining **interpretable rules**, **tree-based ML models**, **customer
 risk profiling**, **graph neural networks**, and **real-data cross validation**.
