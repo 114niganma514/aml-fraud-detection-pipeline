@@ -100,6 +100,7 @@ def main():
                               max_depth=8, n_estimators=400,
                               scale_pos_weight=pos_w, eval_metric="aucpr",
                               early_stopping_rounds=50, tree_method="hist",
+                              enable_categorical=True,
                               random_state=42, n_jobs=-1, verbosity=0)
     model.fit(X_tr, y_tr, eval_set=[(X_va, y_va)], verbose=False)
     xgb_prob = model.predict_proba(X_te)[:, 1]

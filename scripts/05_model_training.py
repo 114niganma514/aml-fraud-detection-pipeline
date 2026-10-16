@@ -103,6 +103,7 @@ def train_xgboost(X_tr, X_va, y_tr, y_va):
         eval_metric="aucpr",
         early_stopping_rounds=50,
         tree_method="hist",
+        enable_categorical=True,  # Payment Format / currencies are pandas category
         random_state=42,
         n_jobs=-1,
         verbosity=0,

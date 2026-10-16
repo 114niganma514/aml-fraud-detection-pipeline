@@ -59,6 +59,7 @@ def quick_xgb_val(X_tr, y_tr, X_va):
     model = xgb.XGBClassifier(objective="binary:logistic", learning_rate=0.05,
                               max_depth=8, n_estimators=200,
                               scale_pos_weight=pos_w, tree_method="hist",
+                              enable_categorical=True,
                               random_state=42, n_jobs=-1, verbosity=0)
     model.fit(X_tr, y_tr)
     return model.predict_proba(X_va)[:, 1]
