@@ -5,7 +5,7 @@
 Elliptic is a REAL Bitcoin transaction graph: 203k nodes (transactions),
 234k directed edges (payment flows), with licit/illicit labels.
 
-WHY (resume narrative):
+WHY:
   * validates the pipeline on real on-chain AML data (second real-data track)
   * introduces a graph neural network comparison: does using the network
     structure beat tree models on raw features alone?
@@ -24,7 +24,7 @@ Comparison:
 Evaluation: PR-AUC on the labelled subset (licit vs illicit).
 
 NOTE on split: the public Kaggle files do not expose the official time step,
-so we use a random 80/20 split of labelled nodes (stated honestly in the
+so we use a random 80/20 split of labelled nodes (stated in the
 report; official Elliptic evaluation uses time-based splits).
 
 Outputs:
@@ -61,9 +61,9 @@ def load_elliptic():
     feat = pd.read_csv(os.path.join(ELLIPTIC_DIR, "elliptic_txs_features.csv"))
     print(f"    nodes={len(feat):,}  edges={len(edges):,}  features={feat.shape[1] - 1}")
 
-    # classes: 1 = licit, 2 = illicit, 'unknown'
+    # Official Elliptic encoding: 1 = illicit (4,545), 2 = licit (42,019), 'unknown'
     cls["class"] = cls["class"].astype(str)
-    label_map = {"1": 0, "2": 1}  # 0 licit, 1 illicit
+    label_map = {"1": 1, "2": 0}  # 1 illicit (positive class), 0 licit
     feat.columns = ["txId"] + [f"f{i}" for i in range(1, feat.shape[1])]
     df = feat.merge(cls, on="txId", how="left")
     df["y"] = df["class"].map(label_map)
@@ -199,7 +199,7 @@ H = (D^-1/2 (A + I) D^-1/2)^2 @ X
 - Graph propagation injects network structure (how money flows) that raw
   per-node features miss -- the core argument for GNNs in AML.
 
-## Caveats (honesty)
+## Caveats
 - Public Kaggle files lack the official time step; we use a random labelled split
   (official Elliptic evaluation is time-based).
 - SGC is a linearised GCN; more expressive models (GAT, GraphSAGE) typically

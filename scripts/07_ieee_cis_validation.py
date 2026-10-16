@@ -2,12 +2,11 @@
 """
 07_ieee_cis_validation.py -- Real-data cross validation: IEEE-CIS Fraud Detection.
 
-WHY THIS FILE EXISTS (resume narrative "synthetic training + real validation"):
+WHY THIS FILE EXISTS ("synthetic training + real validation"):
   IBM HI-Small is synthetic.  IEEE-CIS is a REAL e-commerce fraud dataset
   (590k transactions, ~3.5% fraud, real card/device/email behaviour).
   Running the same modelling stack here shows the pipeline generalises to
-  genuine fraud data -- this is the "does my synthetic experience transfer?"
-  check that interviewers love.
+  genuine fraud data -- a check that results on synthetic data transfer.
 
 Pipeline (mirrors 05):
   * join train_transaction + train_identity on TransactionID
@@ -157,9 +156,9 @@ def main():
 - PR-AUC baseline = fraud prevalence = {y_te.mean():.4f}.
 - The stack built on synthetic IBM data (LightGBM unweighted / XGBoost weighted,
   PR-AUC metric, time-ordered split) transfers directly to real fraud data,
-  validating the "synthetic training + real validation" narrative.
+  validating the "synthetic training + real validation" approach.
 
-## Caveats (honesty for interviews)
+## Caveats
 - IEEE-CIS contains engineered aggregate features (C1-C14, V*) that already
   encode a lot of signal; feature engineering effort was intentionally minimal.
 - We validate the *stack*, not a production-grade real-time system.

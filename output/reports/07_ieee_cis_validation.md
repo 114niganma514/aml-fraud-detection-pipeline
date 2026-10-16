@@ -15,9 +15,9 @@
 - PR-AUC baseline = fraud prevalence = 0.0344.
 - The stack built on synthetic IBM data (LightGBM unweighted / XGBoost weighted,
   PR-AUC metric, time-ordered split) transfers directly to real fraud data,
-  validating the "synthetic training + real validation" narrative.
+  validating the "synthetic training + real validation" approach.
 
-## Caveats (honesty for interviews)
+## Caveats
 - IEEE-CIS contains engineered aggregate features (C1-C14, V*) that already
   encode a lot of signal; feature engineering effort was intentionally minimal.
 - We validate the *stack*, not a production-grade real-time system.

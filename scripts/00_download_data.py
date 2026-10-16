@@ -12,7 +12,7 @@ Downloads the three public datasets used by this project into data/raw/:
 
 Idempotent: already-downloaded files are skipped, so re-running is cheap.
 
-NOTE on licensing (resume compliance):
+NOTE on licensing:
   * IBM HI-Small      : CDLA-Sharing-1.0 (permissive, allows modification/use)
   * IEEE-CIS          : Kaggle competition terms, research/education use
   * Elliptic          : publicly released research dataset
