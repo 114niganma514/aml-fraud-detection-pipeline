@@ -1,0 +1,14 @@
+{
+  "rule_weights": {
+    "RULE_1": 0.0,
+    "RULE_2": 0.0,
+    "RULE_3": 0.0,
+    "RULE_4": 0.0,
+    "RULE_5": 0.0,
+    "RULE_6": 0.5
+  },
+  "base_model": "xgboost",
+  "objective": "best_f1",
+  "base_best_f1": 0.4563233372636033,
+  "hybrid_best_f1": 0.4563233372636033
+}

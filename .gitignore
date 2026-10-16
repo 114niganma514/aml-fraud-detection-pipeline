@@ -1,0 +1,7 @@
+# Raw + processed data (several GB) - re-download with scripts/00_download_data.py
+data/
+*.parquet
+*.zip
+__pycache__/
+*.pyc
+.venv/
