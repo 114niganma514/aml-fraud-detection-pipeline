@@ -18,7 +18,7 @@ import pandas as pd
 from sklearn.metrics import precision_recall_curve, average_precision_score
 
 # ---------------------------------------------------------------------------
-# Canonical paths (D:\\Users\\jiayi\\aml-fraud-detection-pipeline)
+# Canonical paths (resolved relative to the repository root)
 # ---------------------------------------------------------------------------
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CONFIG_DIR = os.path.join(BASE_DIR, "config")

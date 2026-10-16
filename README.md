@@ -42,7 +42,7 @@ scripts/                        numbered pipeline stages + utils
 | 02 | feature_engineering | 44-col feature matrix | time/amount/network/deviation features |
 | 03 | rule_engine | rule flags (R1-R6) | interpretable rules, 16x baseline precision |
 | 04 | customer_profiling | 515k account profiles | 0-100 risk score; launderers score higher |
-| 05 | model_training | LightGBM + XGBoost | PR-AUC up to ~0.48 (baseline 0.001) |
+| 05 | model_training | LightGBM + XGBoost | XGBoost test PR-AUC 0.52 (baseline 0.0018) |
 | 06 | evaluation_report | PR curves + report | rule vs model vs hybrid comparison |
 | 07 | ieee_cis_validation | real fraud validation | stack transfers to real data |
 | 08 | elliptic_gnn | SGC-GCN vs XGBoost | graph structure adds AML signal |
@@ -51,7 +51,9 @@ scripts/                        numbered pipeline stages + utils
 ## 4. Quick start
 
 ```powershell
-cd D:\Users\jiayi\aml-fraud-detection-pipeline
+git clone https://github.com/114niganma514/aml-fraud-detection-pipeline.git
+cd aml-fraud-detection-pipeline
+python scripts\00_download_data.py   # downloads IBM / IEEE-CIS / Elliptic into data/raw
 pip install -r requirements.txt
 python scripts\run_all.py        # or double-click run_all.bat
 ```
