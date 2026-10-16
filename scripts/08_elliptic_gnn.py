@@ -171,6 +171,18 @@ def main():
     fig.savefig(os.path.join(FIGURES_DIR, "08_elliptic_propagation.png"), dpi=120)
     plt.close(fig)
 
+    # data-driven interpretation (do not assume the graph model wins)
+    best_name = max(results, key=lambda k: results[k][0])
+    if "SGC" in best_name:
+        interp_line = ("Graph propagation injects network structure (how money flows) that raw\n"
+                       "  per-node features miss -- the core argument for GNNs in AML.")
+    else:
+        interp_line = ("The 166 raw Elliptic features already encode rich local and 1-hop aggregate\n"
+                       "  information, so a tree model on raw features is strongest. Linear 2-hop\n"
+                       "  averaging (SGC) over-smooths the rare illicit class; it still clearly beats\n"
+                       "  the prevalence baseline, but graph signal is best added as extra features\n"
+                       "  for the tree model or via a non-linear GNN (GAT / GraphSAGE).")
+
     # report
     rep = f"""# 08 Real Blockchain AML: Elliptic + GNN (SGC)
 
@@ -195,9 +207,8 @@ H = (D^-1/2 (A + I) D^-1/2)^2 @ X
 
 ## Interpretation
 - {max(results, key=lambda k: results[k][0])} wins on PR-AUC
-  ({max(results.values())[0]:.4f} vs {min(results.values())[0]:.4f}).
-- Graph propagation injects network structure (how money flows) that raw
-  per-node features miss -- the core argument for GNNs in AML.
+  ({max(results.values())[0]:.4f} vs {min(results.values())[0]:.4f}); baseline = illicit rate {y.mean():.4f}.
+- {interp_line}
 
 ## Caveats
 - Public Kaggle files lack the official time step; we use a random labelled split
